@@ -11,6 +11,20 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+//Show home page 
+Route::get('/', 'IndexController@show')->name('home');
+//Send massage form by e-mail for me
+Route::post('/', 'IndexController@send');
+//admin page
+Route::get('/home', 'HomeController@index')->name('admin');
+
+//edit route
+Route::middleware(['web', 'auth'])->group(function () {
+    Route::resource('about', 'AboutController');
+    Route::resource('edu', 'EduController');
+    Route::resource('skill', 'SkillController');
+    Route::resource('portfolio', 'PortfolioController');
 });
+
+//forgot, login, register, reset, home routes
+Auth::routes();
