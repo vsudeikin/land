@@ -11,20 +11,19 @@
   <body>
 
   @section('menu')
-   @include('site.menu')
+   @include('site.menu') 
   @show
 
 
-  <head>
+{{--  <head>
   @section('about')
-    @include('site.about')
+ @include('site.about')
   @show
   </head>
 
   <section id="edu">
   @section('edu')
-    @include('site.edu')
-  @show
+ @include('site.edu') 
   </section>
 
   <section id="skill">
@@ -41,9 +40,9 @@
 
   <section id="contact">
   @section('contact')
-    @include('site.contact')
+@include('site.contact')
   @show
-  </section>
+  </section> --}}
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

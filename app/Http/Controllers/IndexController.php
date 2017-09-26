@@ -17,7 +17,7 @@ class IndexController extends Controller
 
     public function show()
     {
-        $about = About::all(); 
+        $about = About::first(); 
         $edu = Edu::all();
         $skill = Skill::all();
         $portfolio = Portfolio::all();
