@@ -12,14 +12,14 @@
 */
 
 //Show home page 
-Route::get('/', 'IndexController@show')->name('home');
+Route::get('/', 'IndexController@show')->name('index');
 //Send massage form by e-mail for me
 Route::post('/', 'IndexController@send');
 //admin page
 Route::get('/home', 'HomeController@index')->name('admin');
 
 //edit route
-Route::middleware(['web', 'auth'])->group(function () {
+Route::middleware('auth')->group(function () {
     Route::resource('about', 'AboutController');
     Route::resource('edu', 'EduController');
     Route::resource('skill', 'SkillController');
