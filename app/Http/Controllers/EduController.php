@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Edu;
 
 class EduController extends Controller
 {
@@ -13,7 +14,14 @@ class EduController extends Controller
      */
     public function index()
     {
-        //
+        $edu = Edu::all()->toArray();
+
+        $edit = [
+                'edu' => 'active',
+                'rows' => $edu,
+                'path' => 'edu'
+        ];
+        return view('edit')->with($edit);
     }
 
     /**
@@ -23,7 +31,10 @@ class EduController extends Controller
      */
     public function create()
     {
-        //
+        return view('create')->with([
+            'edu' => 'active',
+            'path' => 'edu'
+            ]);
     }
 
     /**
@@ -34,7 +45,14 @@ class EduController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $this->validate($request, [
+            'name' => 'required|max:50',
+            'desc' => 'required|max:255',
+            'img' =>  'required'
+        ],
+           [ 'required' => 'Поле :attribute обязательно для заполнения',
+            'max'   => 'Поле :attribute должно содержать не более :max символов.'
+            ]);
     }
 
     /**
@@ -79,6 +97,7 @@ class EduController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Edu::destroy($id);
+        return redirect()->back();
     }
 }

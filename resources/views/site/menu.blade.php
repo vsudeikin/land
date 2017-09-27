@@ -13,7 +13,7 @@
           <a class="nav-link js-scroll-trigger" href="#edu"  >Образование</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#skill"  >Навыки</a>
+          <a class="nav-link js-scroll-trigger" href="#skill" id="a_skill"  >Навыки</a>
         </li>
         <li class="nav-item">
           <a class="nav-link js-scroll-trigger" href="#portfolio"  >Портфолио</a>

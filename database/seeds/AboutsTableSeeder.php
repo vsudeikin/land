@@ -17,7 +17,7 @@ class AboutsTableSeeder extends Seeder
             'email' => 'vsudeikin@gmail.com',
             'date' => '1985-07-03',
             'phone' => '(096) 453-11-75',
-            'img' => 'about/me.jpg'
+            'img' => 'about/me.png'
         ]);
     }
 }

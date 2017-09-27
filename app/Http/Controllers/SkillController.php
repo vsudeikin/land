@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Skill;
 
 class SkillController extends Controller
 {
@@ -13,7 +14,14 @@ class SkillController extends Controller
      */
     public function index()
     {
-        //
+        $skill = Skill::all()->toArray();
+
+        $edit = [
+                'skill' => 'active',
+                'rows'  => $skill,
+                'path' => 'skill'
+            ];
+        return view('edit')->with($edit);
     }
 
     /**
@@ -23,7 +31,10 @@ class SkillController extends Controller
      */
     public function create()
     {
-        //
+        return view('create')->with([
+            'skill' => 'active',
+            'path' => 'skill'
+            ]);
     }
 
     /**
@@ -34,7 +45,15 @@ class SkillController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|max:50',
+            'desc' => 'required|max:255',
+            'img' =>  'required'
+        ],
+           [ 'required' => 'Поле :attribute обязательно для заполнения',
+            'max'   => 'Поле :attribute должно содержать не более :max символов.'
+            ]);
+
     }
 
     /**
@@ -79,6 +98,7 @@ class SkillController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Skill::destroy($id);
+        return redirect()->back();
     }
 }

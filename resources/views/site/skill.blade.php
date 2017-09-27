@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="row">
+    <div class="row" id="block_skill">
     @if(isset($skill) && is_object($skill))
         <table >
             <tr>

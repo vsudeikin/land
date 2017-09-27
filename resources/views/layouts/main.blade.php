@@ -7,6 +7,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
   </head>
   <body>
   
@@ -16,40 +17,40 @@
     </div>
  @endif
 
-  @section('menu')
-   @include('site.menu') 
-  @show
 
+    @section('menu')
+      @include('site.menu') 
+    @show
 
-<head>
-  @section('about')
-    @include('site.about')
-  @show
+  <head>
+    @section('about')
+      @include('site.about')
+    @show
   </head>
 
   <section id="edu">
-  @section('edu')
-    @include('site.edu') 
-  @show
+    @section('edu')
+     @include('site.edu') 
+    @show   
   </section>
 
   <section id="skill">
-  @section('skill')
-    @include('site.skill')
-  @show
+    @section('skill')
+      @include('site.skill')
+    @show
   </section>
 
   <section id="portfolio">
-  @section('portfolio')
-    @include('site.portfolio')
-  @show
+    @section('portfolio')
+      @include('site.portfolio')
+    @show
   </section>
 
  <section id="contact">
-  @section('contact')
-@include('site.contact')
-  @show
-  </section>
+   @section('contact')
+    @include('site.contact')
+   @show
+ </section>
 
     <!-- Optional JavaScript -->
 
