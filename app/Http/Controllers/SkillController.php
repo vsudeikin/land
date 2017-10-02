@@ -47,17 +47,26 @@ class SkillController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|max:50',
-            'desc' => 'required|max:255',
-            'img' =>  'required|unique:skills,img'
+            'desc' => 'required',
+            'img' =>  'required_without:img_old|unique:skills,img,$request->id'
         ],
            [ 'required' => 'Поле :attribute обязательно для заполнения',
             'max'   => 'Поле :attribute должно содержать не более :max символов.',
             'unique' => 'Файл с таким именем уже существует.',
-        
+            'required_without' => 'Выберете изображение'
+          
             ]);
 
-        $skill = new Skill;
-        $skill->fill($request->all())->save();
+            if ($request->hasFile('img')) {
+                $file = $request->file('img');         
+                $file->move(public_path().'/img/skill/', $file->getClientOriginalName());
+                $data = $request->except(['_token', 'img_old']);
+                $data['img'] = $file->getClientOriginalName();
+                $portfolio = Skill::updateOrCreate([ 'id' => $data['id']], $data);
+            } else {
+                $data = $request->except(['_token', 'img_old', 'img']);
+                $portfolio = Skill::updateOrCreate([ 'id' => $data['id']], $data);
+            }
 
         return redirect()->route('skill.index');
     }

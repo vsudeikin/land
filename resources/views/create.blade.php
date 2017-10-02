@@ -44,7 +44,7 @@
                       </div>
                       <div class="form-group">
                         <label for="editor">Описание:</label>
-                        <textarea name="desc" id="editor" class="form-control">{{$desc or old('desc')}}
+                        <textarea name="desc" id="editor" class="form-control" value="{{$desc or old('desc')}}">{{$desc or old('desc')}}
                          </textarea>
                            @if ($errors->has('desc'))
                              <span class="help-block">
@@ -69,7 +69,8 @@
                       </div>  
 
                       {{ csrf_field() }}
-                      
+                      <input type="hidden" name="id" value="{{$id or ''}}">
+                      <input type="hidden" name="img_old" value="{{$img or ''}}">
                       <div class="form-group">  
                       <button type="submit" class="btn btn-primary">Сохранить</button>
                     </div>

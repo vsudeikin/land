@@ -48,19 +48,25 @@ class PortfolioController extends Controller
          $this->validate($request, [
             'name' => 'required|max:50',
             'desc' => 'required',
-            'img' =>  'required|unique:portfolios,img'
+            'img' =>  'required_without:img_old|unique:portfolios,img,$request->id'
         ],
            [ 'required' => 'Поле :attribute обязательно для заполнения',
             'max'   => 'Поле :attribute должно содержать не более :max символов.',
             'unique' => 'Файл с таким именем уже существует.',
+            'required_without' => 'Выберете изображение'
           
             ]);
 
-         $portfolio = new Portfolio;
-         $portfolio->link = $request->desc;
-         $portfolio->name = $request->name;
-         $portfolio->img = $request->img;
-         $portfolio->save();
+            if ($request->hasFile('img')) {
+                $file = $request->file('img');         
+                $file->move(public_path().'/img/portfolio/', $file->getClientOriginalName());
+                $data = $request->except(['_token', 'img_old']);
+                $data['img'] = $file->getClientOriginalName();
+                $portfolio = Portfolio::updateOrCreate([ 'id' => $data['id']], $data);
+            } else {
+                $data = $request->except(['_token', 'img_old', 'img']);
+                $portfolio = Portfolio::updateOrCreate([ 'id' => $data['id']], $data);
+            }
 
          return redirect()->route('portfolio.index');
     }
