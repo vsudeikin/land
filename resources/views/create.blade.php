@@ -32,10 +32,10 @@
                 
                 
                 <div class="container">
-                    <form action="{{route($path . '.store' )}}" method="post"> 
+                    <form action="{{route($path . '.store' )}}" method="post" enctype="multipart/form-data"> 
                       <div class="form-group">
                         <label for="nameInput">Название:</label>
-                        <input type="text" name="name" id="nameInput" class="form-control" value="{{ old('name')}} ">
+                        <input type="text" name="name" id="nameInput" class="form-control" value="{{$name or old('name') }} ">
                            @if ($errors->has('name'))
                              <span class="help-block">
                                 <strong>{{ $errors->first('name') }}</strong>
@@ -44,16 +44,23 @@
                       </div>
                       <div class="form-group">
                         <label for="editor">Описание:</label>
-                        <textarea name="desc" id="editor" class="form-control"> {{ old('desc') }} </textarea>
+                        <textarea name="desc" id="editor" class="form-control">{{$desc or old('desc')}}
+                         </textarea>
                            @if ($errors->has('desc'))
                              <span class="help-block">
                                 <strong>{{ $errors->first('desc') }}</strong>
                              </span>
                            @endif
                       </div>   
+                      @isset($img)
+                       <div class="form-group">
+                        <label for="imageOld">Картинка:</label>
+                        <img src="/img/{{$path}}/{{ $img or ''}}" alt="{{$name or ''}}" id="imageOld">
+                      </div> 
+                      @endisset
                       <div class="form-group">
-                        <label for="image">Картинка:</label>
-                        <input type="file" id="image" name='img' class="filestyle" data-text="Выбрать" data-buttonBefore="true">
+                        <label for="imageS">Картинка:</label>
+                        <input type="file" id="imageS" name="img" class="filestyle" data-text="Выбрать" data-buttonBefore="true" accept="image/jpeg,image/png,image/gif,image/jpg" >
                            @if ($errors->has('img'))
                              <span class="help-block">
                                 <strong>{{ $errors->first('img') }}</strong>

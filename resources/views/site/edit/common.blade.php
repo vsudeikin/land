@@ -14,13 +14,13 @@
     @foreach($v as $key => $val)
         <td>
         @if( $key == 'name')
-            <a href='{{ route($path . ".edit", $k + 1) }}' title="Редактировать">{{$val}}</a>
+            <a href='{{ route($path . ".edit", $v["id"]) }}' title="Редактировать">{{$val}}</a>
         @else {{$val}}
         @endif
         </td>
     @endforeach
       <td>
-        <form action='{{ route($path . ".destroy", $k + 1) }}' method="post">
+        <form action='{{ route($path . ".destroy", $v["id"]) }}' method="post">
           {{ csrf_field() }}
           {{ method_field('DELETE') }}
           <input class="btn btn-danger btn-sm" type="submit" value="Удалить">

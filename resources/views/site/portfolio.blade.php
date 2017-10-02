@@ -11,7 +11,7 @@
             <tr>
                 <td>{{ $v->name }}</td>
                 <td>{{ $v->link}}</td>
-                <td>{{ Html::image('img/'. $v->img) }} </td>
+                <td>{{ Html::image('img/portfolio/'. $v->img) }} </td>
             </tr>    
         @endforeach
         </table>

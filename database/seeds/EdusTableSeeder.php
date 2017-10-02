@@ -14,25 +14,25 @@ class EdusTableSeeder extends Seeder
         DB::table('edus')->insert([
             [ 'name' => 'Курсы Английского',
               'desc' => 'American English School. Advenced level.',
-              'img' => 'edu/AmericanEnglish.png' ],
+              'img' => 'AmericanEnglish.png' ],
             [ 'name' => 'Основы программирования',
               'desc' => 'Computer Signce 50. Гарвард. prometeous',
-              'img' => 'edu/CS50.jpeg' ],
+              'img' => 'CS50.jpeg' ],
             [ 'name' => 'НТУУ КПИ',
               'desc' => 'ФАКС, метрология и измерительная техника, бакалавр ',
-              'img' => 'edu/kpi.png' ],
+              'img' => 'kpi.png' ],
             [ 'name' => 'Литература',
               'desc' => 'PHP7 в подлиннике. Дмитрий Котеров',
-              'img' => 'edu/php7.jpg' ],
+              'img' => 'php7.jpg' ],
             [ 'name' => 'LAMP',
               'desc' => 'Администрирование linux. Кирилл Семаев.',
-              'img' => 'edu/semaev.jpg' ],
+              'img' => 'semaev.jpg' ],
             [ 'name' => 'LARAVEL',
               'desc' => 'Курсы Web For Myself. Виктор Гавриленко. Андрей Кудлай.',
-              'img' => 'edu/web_for_myself.jpg' ],
+              'img' => 'web_for_myself.jpg' ],
             [ 'name' => 'Основы WEB UI разработки',
               'desc' => 'HTML CSS JavaScript',
-              'img' => 'edu/webui_prometeus.jpg' ]
+              'img' => 'webui_prometeus.jpg' ]
         ]);
     }
 }

@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Edu;
+use Validator;
 
 class EduController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -45,14 +47,27 @@ class EduController extends Controller
      */
     public function store(Request $request)
     {
+       
+
+      //  dd($_FILES);
          $this->validate($request, [
             'name' => 'required|max:50',
             'desc' => 'required|max:255',
-            'img' =>  'required'
+            'img' =>  'required|unique:edus,img'
         ],
            [ 'required' => 'Поле :attribute обязательно для заполнения',
-            'max'   => 'Поле :attribute должно содержать не более :max символов.'
+            'max'   => 'Поле :attribute должно содержать не более :max символов.',
+            'unique' => 'Файл с таким именем уже существует.',
+
             ]);
+
+         $file = $request->file('img');         
+         $upload = $file->move(public_path().'/img/edu/', $file->getClientOriginalName());
+      
+         $edu = new Edu;
+         $edu->fill($request->all())->save();
+       
+       return redirect()->route('edu.index');
     }
 
     /**
@@ -72,9 +87,14 @@ class EduController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Edu $edu, Request $request)
     {
-        //
+        // $data['data'] = Edu::where('id',$id)->get()->toArray(); 
+        $data = $edu->toArray();
+        $data['edu'] = 'active';
+        $data['path'] = 'edu';
+        
+        return view('create')->with($data);
     }
 
     /**

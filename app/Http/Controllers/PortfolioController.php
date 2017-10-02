@@ -47,12 +47,22 @@ class PortfolioController extends Controller
     {
          $this->validate($request, [
             'name' => 'required|max:50',
-            'desc' => 'required|max:255',
-            'img' =>  'required'
+            'desc' => 'required',
+            'img' =>  'required|unique:portfolios,img'
         ],
            [ 'required' => 'Поле :attribute обязательно для заполнения',
-            'max'   => 'Поле :attribute должно содержать не более :max символов.'
+            'max'   => 'Поле :attribute должно содержать не более :max символов.',
+            'unique' => 'Файл с таким именем уже существует.',
+          
             ]);
+
+         $portfolio = new Portfolio;
+         $portfolio->link = $request->desc;
+         $portfolio->name = $request->name;
+         $portfolio->img = $request->img;
+         $portfolio->save();
+
+         return redirect()->route('portfolio.index');
     }
 
     /**
@@ -72,9 +82,13 @@ class PortfolioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Portfolio $portfolio, Request $request)
     {
-        //
+        $data = $portfolio->toArray();
+        $data['portfolio'] = 'active';
+        $data['path'] = 'portfolio';
+        
+        return view('create')->with($data);
     }
 
     /**

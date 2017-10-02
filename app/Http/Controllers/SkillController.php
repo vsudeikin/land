@@ -7,7 +7,7 @@ use App\Skill;
 
 class SkillController extends Controller
 {
-    /**
+      /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -48,12 +48,18 @@ class SkillController extends Controller
         $this->validate($request, [
             'name' => 'required|max:50',
             'desc' => 'required|max:255',
-            'img' =>  'required'
+            'img' =>  'required|unique:skills,img'
         ],
            [ 'required' => 'Поле :attribute обязательно для заполнения',
-            'max'   => 'Поле :attribute должно содержать не более :max символов.'
+            'max'   => 'Поле :attribute должно содержать не более :max символов.',
+            'unique' => 'Файл с таким именем уже существует.',
+        
             ]);
 
+        $skill = new Skill;
+        $skill->fill($request->all())->save();
+
+        return redirect()->route('skill.index');
     }
 
     /**
@@ -73,9 +79,13 @@ class SkillController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Skill $skill, Request $request)
     {
-        //
+        $data = $skill->toArray();
+        $data['skill'] = 'active';
+        $data['path'] = 'skill';
+        
+        return view('create')->with($data);
     }
 
     /**

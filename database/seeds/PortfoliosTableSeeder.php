@@ -14,13 +14,13 @@ class PortfoliosTableSeeder extends Seeder
         DB::table('portfolios')->insert([
             [ 'name' => 'colouryourlife',
               'link' => '#',
-              'img' => 'portfolio/colouryourlife.jpg' ],
+              'img' => 'colouryourlife.jpg' ],
             [ 'name' => 'RAP',
               'link' => 'http://suval.com.ua/rap',
-              'img' => 'portfolio/rap.jpg' ],
+              'img' => 'rap.jpg' ],
             [ 'name' => 'YOUREST',
               'link' => 'http://yourest.com.ua',
-              'img' => 'portfolio/yourest.jpg' ],
+              'img' => 'yourest.jpg' ],
         ]);
     }
 }
