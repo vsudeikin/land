@@ -7,20 +7,23 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:300i" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
   </head>
   <body>
+    <div class="container">
   
- @if(session('sent'))
+  @if(session('sent'))
     <div class="alert alert-success">
       <strong>{{ session('sent') }}</strong>
     </div>
- @endif
+  @endif
 
 
-    @section('menu')
-      @include('site.menu') 
-    @show
+  @section('menu')
+    @include('site.menu') 
+  @show
 
   <head>
     @section('about')
@@ -46,11 +49,13 @@
     @show
   </section>
 
- <section id="contact">
-   @section('contact')
-    @include('site.contact')
-   @show
- </section>
+  <section id="contact">
+    @section('contact')
+      @include('site.contact')
+    @show
+  </section>
+
+ </div>
 
     <!-- Optional JavaScript -->
 

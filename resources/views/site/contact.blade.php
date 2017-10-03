@@ -1,9 +1,11 @@
+<h1 class="display-5">Написать мне</h1>
+    <hr class="my-4">
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2" style="background-color: red">
+        
+        <div class="col-md-10 col-lg-10 col-sm-8 col-xs-10" >
             <div class="panel panel-default">
-                <div class="panel-heading">Написать мне</div>
-
+                
                 <div class="panel-body">
 
                     <form class="form-horizontal" method="POST" action="{{ route('index') }}">
@@ -42,8 +44,7 @@
                         <div class="form-group">
                             <label for="text" class="col-md-4 control-label">Сообщение*</label>
                             <div class="col-md-6">
-                                <textarea id="text"  class="form-control" name="text" required>{{ old('text') }}
-                                </textarea>
+                                <textarea id="text"  class="form-control" name="text" required>{{ old('text') }}</textarea>
                                 @if ($errors->has('text'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('text') }}</strong>
@@ -65,5 +66,6 @@
                 </div>
             </div>
         </div>
+        
     </div>
 </div>

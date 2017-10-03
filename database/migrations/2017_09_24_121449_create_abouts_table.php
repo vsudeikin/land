@@ -18,7 +18,7 @@ class CreateAboutsTable extends Migration
             $table->string('name', 100);
             $table->string('email', 100);
             $table->date('date');
-            $table->string('phone', 20);
+            $table->text('about');
             $table->string('img', 50);
             $table->timestamps();
         });

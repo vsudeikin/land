@@ -1,20 +1,18 @@
-<div class="container">
-    <div class="row" id="block_skill">
-    @if(isset($skill) && is_object($skill))
-        <table >
-            <tr>
-               <th>Название</th>
-               <th>Описание</th>
-               <th>Картинка</th>
-            </tr>
-        @foreach($skill as $v)
-            <tr>
-                <td>{{ $v->name }}</td>
-                <td>{{ $v->desc}}</td>
-                <td>{{ Html::image('img/skills/'. $v->img) }} </td>
-            </tr>    
-        @endforeach
-        </table>
-    @endif
+    
+    <div class="container">
+        <h1 class="display-5">Навыки</h1>
+        <hr class="my-4">
+        <div class="row" id="block_skill">
+        @if(isset($skill) && is_object($skill))
+            @foreach($skill as $v)
+                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                    <div class="card">
+                        <div class="card-header">{{ $v->name }}</div>
+                        <img src="{{ 'img/skill/'. $v->img}}" alt="{{$v->name}}" class="card-img-top">
+                        <p class="card-text p-3">{{ $v->desc}}</p>
+                    </div>
+                </div>
+            @endforeach
+        @endif
+        </div>
     </div>
-</div>
