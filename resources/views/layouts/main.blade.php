@@ -14,13 +14,16 @@
   <body>
     <div class="container">
   
-  @if(session('sent'))
-    <div class="alert alert-success">
-      <strong>{{ session('sent') }}</strong>
-    </div>
-  @endif
+     @if(session('sent'))
+      <div class="alert alert-success col-md-3 col-lg-3 col-sm-12 col-xs-12" id="massageSent">
+        <strong>{{ session('sent') }}</strong>
+     </div>
+     <script type="text/javascript">
+        setTimeout(function(){$('#massageSent').fadeOut('fast')},3000);
+     </script>
+     @endif
 
-
+ 
   @section('menu')
     @include('site.menu') 
   @show
