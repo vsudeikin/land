@@ -34,7 +34,7 @@ class SendMassage extends Mailable
      */
     public function build()
     {
-        return $this->from($this->email)->view('layouts.mail')->with([
+        return $this->from('admin@suval.com.ua')->view('layouts.mail')->with([
             'name' => $this->name,
             'email' => $this->email,
             'text' => $this->text,
