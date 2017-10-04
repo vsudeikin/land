@@ -10,6 +10,7 @@
     
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans:300i" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <title>{{ env('APP_NAME') }}</title>
   </head>
   <body>
     <div class="container">

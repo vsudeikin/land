@@ -68,4 +68,10 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
         ]);
     }
+
+    //Do not allow to register. Redirect to index page
+    public function showRegistrationForm()
+    {
+        return redirect()->route('index');
+    }
 }
